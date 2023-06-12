@@ -42,7 +42,17 @@ module.exports = {
         // '../../**/*.py'
     ],
     theme: {
-        extend: {},
+        extend: {
+            keyframes: {
+                overlay: {
+                    '0%': {opacity: '0'},
+                    '100%': {opacity: '1'}
+                },
+            },
+            animation: {
+                overlay: 'overlay .2s ease-in-out forwards',
+            }
+        },
     },
     plugins: [
         /**

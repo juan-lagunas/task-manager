@@ -4,14 +4,14 @@
 <main class="text-zinc-900">
 
     <!--Create message overlay-->
-    <section id="overlay" class="h-screen fixed top-0 bg-[rgba(0,0,0,0.35)] w-full z-10 hidden">
+    <section id="overlay" class="h-screen fixed top-0 bg-[rgba(0,0,0,0.5)] w-full z-10 hidden animate-overlay">
 
         <div class="flex h-full w-full">
             <div class="w-[500px] m-auto bg-zinc-900 rounded-xl shadow-2xl p-6">
 
                 <div class="mb-4 flex justify-end">
                     <button id="overlay-button" class="h-[25px] w-[25px]" onclick="overlay()">
-                        <svg class="fill-white" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 16 16"><g class="icon-color"><path d="M11.9 5.5 9.4 8l2.5 2.5c.2.2.2.5 0 .7l-.7.7c-.2.2-.5.2-.7 0L8 9.4l-2.5 2.5c-.2.2-.5.2-.7 0l-.7-.7c-.2-.2-.2-.5 0-.7L6.6 8 4.1 5.5c-.2-.2-.2-.5 0-.7l.7-.7c.2-.2.5-.2.7 0L8 6.6l2.5-2.5c.2-.2.5-.2.7 0l.7.7c.2.2.2.5 0 .7z"/></g></svg>
+                        <svg class="fill-white hover:fill-red-500 transition ease-in-out duration-200" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 16 16"><g class="icon-color"><path d="M11.9 5.5 9.4 8l2.5 2.5c.2.2.2.5 0 .7l-.7.7c-.2.2-.5.2-.7 0L8 9.4l-2.5 2.5c-.2.2-.5.2-.7 0l-.7-.7c-.2-.2-.2-.5 0-.7L6.6 8 4.1 5.5c-.2-.2-.2-.5 0-.7l.7-.7c.2-.2.5-.2.7 0L8 6.6l2.5-2.5c.2-.2.5-.2.7 0l.7.7c.2.2.2.5 0 .7z"/></g></svg>
                     </button>
                 </div>
                 <form action="" type="post" class="w-full h-full">
@@ -32,21 +32,41 @@
 
     </section>
 
-    <section class="xl:w-3/4 mx-auto flex items-center justify-between px-6 pt-20 text-sm font-bold">
-        
-        <div class="flex flex-row gap-2 xl:gap-4 capitalize text-center">
-            <a href="" class=" sm:py-3 sm:w-24 xl:w-32 sm:bg-white sm:rounded-3xl hover:text-blue-600" >all</a>
-            <a href="" class=" sm:py-3 sm:w-24 xl:w-32 sm:bg-white sm:rounded-3xl hover:text-blue-600">urgent</a>
-            <a href="" class=" sm:py-3 sm:w-24 xl:w-32 sm:bg-white sm:rounded-3xl hover:text-blue-600">completed</a>
-            <button class=" sm:py-3 sm:w-24 xl:w-32 sm:bg-white sm:rounded-3xl hover:text-blue-600" onclick="overlay()">Create</button>
+    <!--Filter and create buttons-->
+    <section class="xl:w-3/4 mx-auto flex items-center px-6 pt-20 text-sm font-bold justify-between select-none">
+        <div class="flex flex-row gap-2 xl:gap-4 relative">
+            <button id="filter-button" class="rounded-3xl bg-white overflow-hidden group">
+                <div class="py-3 px-6 flex justify-between hover:text-blue-600 hover:fill-blue-600">
+                    <span>Filter by</span>
+                    <svg  class="w-5" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 -0.5 16 16"><g class="icon-color"><path d="m4.464 6.05-.707.707L8 11l4.243-4.243-.707-.707L8 9.586z"/></g></svg>
+                </div>
+
+                <ul id="filter-dropdown" class="absolute top-14 z-10 bg-[#fffffffa] rounded-3xl w-full p-3 drop-shadow text-center capitalize hidden groupd-hover:block">
+                    <li class="flex justify-center mb-2">
+                        <a href="#" class="py-2 w-full text-center hover:bg-zinc-200 rounded-full">all</a>
+                    </li>
+                    <li class="flex justify-center mb-2">
+                        <a href="#" class="py-2 w-full text-center hover:bg-zinc-200 rounded-full">Urgent</a>
+                    </li>
+                    <li class="flex justify-center mb-2">
+                        <a href="#" class="py-2 w-full text-center hover:bg-zinc-200 rounded-full">Created</a>
+                    </li>
+                    <li class="flex justify-center">
+                        <a href="#" class="py-2 w-full text-center hover:bg-zinc-200 rounded-full">done</a>
+                    </li>
+                </ul>
+            </button>
+
+            <button class="py-3 w-24 xl:w-32 bg-white rounded-3xl hover:text-blue-600 text-center" onclick="overlay()">Create</button>
         </div>
-        <div class="">{{ date }}</div>
+
+        <div class="hidden sm:flex">{{ date }}</div>
     </section>
 
     <section class="xl:w-3/4 mx-auto px-6 py-6 ">
 
         <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-6">
-            <div class="h-64 bg-green-400 rounded-xl drop-shadow p-4 text-sm overflow-auto scrollbar scrollbar-w-0">
+            <div class="h-64 bg-green-500 rounded-xl drop-shadow p-4 text-sm overflow-auto scrollbar scrollbar-w-0">
                 <div class="flex flex-row justify-end mb-3">
                     <button class="icon icon-size-small icon-state-default h-5 w-5 ">
                         <svg class="fill-zinc-900 hover:fill-white transition ease-in-out duration-200" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 16 16"><g class="icon-color"><path d="M7 5H6v8h1zM10 5H9v8h1z"/><path d="M13 3h-2v-.75C11 1.56 10.44 1 9.75 1h-3.5C5.56 1 5 1.56 5 2.25V3H3v10.75c0 .69.56 1.25 1.25 1.25h7.5c.69 0 1.25-.56 1.25-1.25V3zm-7-.75A.25.25 0 0 1 6.25 2h3.5a.25.25 0 0 1 .25.25V3H6v-.75zm6 11.5a.25.25 0 0 1-.25.25h-7.5a.25.25 0 0 1-.25-.25V4h8v9.75z"/><path d="M13.5 4h-11a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1z"/></g></svg>
@@ -76,10 +96,10 @@
                     <div class="text-base">Lacus sed turpis tincidunt id aliquet risus. Viverra ipsum nunc aliquet bibendum enim facilisis gravida.</div>
                 </div>
             </div>
-            <div class="h-64 bg-red-400 rounded-xl drop-shadow p-4 text-sm">
+            <div class="h-64 bg-red-500 rounded-xl drop-shadow p-4 text-sm">
                 <div class="flex flex-row justify-between mb-3">
                     <button class="icon icon-size-small icon-state-default h-5 w-5 ">
-                        <svg class="fill-zinc-900 hover:fill-green-500 transition ease-in-out duration-200" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 16 16"><g class="icon-color"><path d="m12.1 5.3-.4-.3c-.1-.1-.3-.1-.4 0L6.6 9.8l-2-2c-.1-.1-.3-.1-.4 0l-.3.4c-.1.1-.1.3 0 .4L6 10.7l.4.3c.1.1.3.1.4 0l.4-.4 4.9-4.9c.1-.1.1-.3 0-.4z"/><path d="M13 2c.6 0 1 .4 1 1v10c0 .6-.4 1-1 1H3c-.6 0-1-.4-1-1V3c0-.6.4-1 1-1h10m0-1H3c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2z"/></g></svg>
+                        <svg class="fill-zinc-900 hover:fill-white transition ease-in-out duration-200" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 16 16"><g class="icon-color"><path d="m12.1 5.3-.4-.3c-.1-.1-.3-.1-.4 0L6.6 9.8l-2-2c-.1-.1-.3-.1-.4 0l-.3.4c-.1.1-.1.3 0 .4L6 10.7l.4.3c.1.1.3.1.4 0l.4-.4 4.9-4.9c.1-.1.1-.3 0-.4z"/><path d="M13 2c.6 0 1 .4 1 1v10c0 .6-.4 1-1 1H3c-.6 0-1-.4-1-1V3c0-.6.4-1 1-1h10m0-1H3c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2z"/></g></svg>
                     </button>
                     <button class="icon icon-size-small icon-state-default h-5 w-5 ">
                         <svg class="fill-zinc-900 hover:fill-white transition ease-in-out duration-200" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 16 16"><g class="icon-color"><path d="M3.25 14a.25.25 0 0 1-.25-.25V4h8v1.256l1-.993V4h.5a.5.5 0 0 0 0-1H10v-.75C10 1.56 9.44 1 8.75 1h-3.5C4.56 1 4 1.56 4 2.25V3H1.5a.5.5 0 0 0 0 1H2v9.75c0 .69.56 1.25 1.25 1.25h.767l.009-1H3.25ZM5 2.25A.25.25 0 0 1 5.25 2h3.5a.25.25 0 0 1 .25.25V3H5v-.75ZM9 5H8v3.233l1-.992V5ZM6 5H5v6.21l1-.992V5Zm7.2 1.2 1.6 1.6c.1.1.1.3 0 .4l-1.3 1.3-2-2 1.3-1.3c.1-.1.3-.1.4 0Zm-7.1 6.7L11 8l2 2-4.9 4.9c-.1.1-.1.1-.2.1H6v-1.9c0-.1 0-.1.1-.2Z"/></g></svg>
@@ -121,7 +141,18 @@
     function overlay() {
         const message = document.querySelector('#overlay');
         message.classList.toggle('hidden');
-    };
-        
+    }
+
+
+    document.addEventListener('click', function(e) {
+        const filterButton = document.querySelector("#filter-button");
+        const filterDropdown = document.querySelector("#filter-dropdown");
+        if (!filterButton.contains(e.target)) {
+            filterDropdown.classList.add("hidden");
+        } else {
+            filterDropdown.classList.toggle('hidden');
+        }
+    });
+   
 </script>
 {% endblock %}
