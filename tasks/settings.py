@@ -35,6 +35,10 @@ TAILWIND_APP_NAME = 'theme'
 
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 
+LOGIN_URL = '/signin'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/signin'
+
 # Application definition
 
 INSTALLED_APPS = [
