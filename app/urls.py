@@ -10,4 +10,6 @@ urlpatterns = [
     path('signout/', views.signout, name='signout'),
     path('create/', views.create, name='create'),
     path('complete/<int:post>', views.complete, name='complete'),
+    path('undo/<int:post>', views.undo, name='undo'),
+    path('edit/<int:post>', views.edit, name='edit'),
 ]

@@ -50,7 +50,7 @@ module.exports = {
                 },
             },
             animation: {
-                overlay: 'overlay .2s ease-in-out forwards',
+                overlay: 'overlay .2s ease-in forwards',
             }
         },
     },

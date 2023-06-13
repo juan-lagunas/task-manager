@@ -9,7 +9,7 @@ import datetime
 
 @login_required
 def index(request):
-    posts = Post.objects.all().order_by('due')
+    posts = Post.objects.all().order_by('completed','due',)
     date = datetime.date.today()
     return render(request, 'app/index.html', {
         'posts': posts,
@@ -103,7 +103,17 @@ def create(request):
 
 def complete(request, post):
     post = Post.objects.get(pk=post)
-    post.urgent = False
     post.completed = True
     post.save()
     return redirect('/')
+
+
+def undo(request, post):
+    post = Post.objects.get(pk=post)
+    post.completed = False
+    post.save()
+    return redirect('/')
+
+
+def edit(request, post):
+    redirect('/')

@@ -19,7 +19,5 @@ class Post(models.Model):
         else:
             return False
         
-
-        
     def __str__(self):
         return f'{self.user}: {self.note} {self.created} {self.due} completed: {self.completed} urgent: {self.urgent}'
