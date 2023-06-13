@@ -24,8 +24,7 @@ def index(request):
         posts = Post.objects.filter(complete=True).order_by('due')
     else:
         posts = Post.objects.all().order_by('complete', 'due')
-
-    print(filter)
+    # Render site with filter if given
     return render(request, 'app/index.html', {
         'posts': posts,
         'date': date
