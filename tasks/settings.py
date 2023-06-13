@@ -26,9 +26,9 @@ SECRET_KEY = 'django-insecure-!&7@=lt0ot9-z&h0+&52kh(0gqmlg_k1ltka8-ls@&b(1b+wfq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['task-manager-production-37a5.up.railway.app', '127.0.0.1']
+ALLOWED_HOSTS = ['pbj.up.railway.app', '127.0.0.1']
 
-CSRF_TRUSTED_ORIGINS = ['https://task-manager-production-37a5.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://pbj.up.railway.app']
 
 INTERNAL_IPS = [
     "127.0.0.1",
