@@ -19,7 +19,7 @@ def index(request):
     if filter == 'urgent':
         posts = Post.objects.filter(due__lte=tomorrow, complete=False).order_by('due')
     elif filter == 'created':
-        posts = Post.objects.filter(user=request.user.username).order_by('due')
+        posts = Post.objects.filter(user=request.user.username).order_by('complete', 'due')
     elif filter == 'complete':
         posts = Post.objects.filter(complete=True).order_by('due')
     else:
