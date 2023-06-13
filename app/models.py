@@ -9,7 +9,7 @@ class Post(models.Model):
     note = models.CharField(max_length=128)
     created = models.DateField()
     due = models.DateField()
-    completed = models.BooleanField(default=False, null=True)
+    complete = models.BooleanField(default=False, null=True)
 
     @property
     def urgent(self):
@@ -20,4 +20,4 @@ class Post(models.Model):
             return False
         
     def __str__(self):
-        return f'{self.user}: {self.note} {self.created} {self.due} completed: {self.completed} urgent: {self.urgent}'
+        return f'{self.user}: {self.note} {self.created} {self.due} complete: {self.complete} urgent: {self.urgent}'

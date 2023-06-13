@@ -4,6 +4,6 @@ from .models import Post
 # Register your models here.
 
 class AdminPost(admin.ModelAdmin):
-    list_display = ('id', 'subject', 'user', 'note', 'created', 'due', 'completed', 'urgent')
+    list_display = ('id', 'subject', 'user', 'note', 'created', 'due', 'complete', 'urgent')
 
 admin.site.register(Post, AdminPost)

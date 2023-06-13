@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -9,8 +9,23 @@ import datetime
 
 @login_required
 def index(request):
-    posts = Post.objects.all().order_by('completed','due',)
     date = datetime.date.today()
+    tomorrow = datetime.date.today() + datetime.timedelta(days=1)
+    # Initiate sesssion variable to filter posts
+    if 'filter' not in request.session:
+        request.session['filter'] = 'all'
+    # Get current value of filter session variable
+    filter = request.session['filter']
+    if filter == 'urgent':
+        posts = Post.objects.filter(due__lte=tomorrow, complete=False).order_by('due')
+    elif filter == 'created':
+        posts = Post.objects.filter(user=request.user.username).order_by('due')
+    elif filter == 'complete':
+        posts = Post.objects.filter(complete=True).order_by('due')
+    else:
+        posts = Post.objects.all().order_by('complete', 'due')
+
+    print(filter)
     return render(request, 'app/index.html', {
         'posts': posts,
         'date': date
@@ -68,7 +83,7 @@ def signout(request):
 
 
 def create(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('complete','due',)
     date = datetime.date.today()
     if request.method == 'POST':
         subject = request.POST['subject']
@@ -90,30 +105,54 @@ def create(request):
             created = date,
             due = due,
         )
-        # Render homepage with new posted added
-        posts = Post.objects.all()
-        return render(request, 'app/index.html', {
-            'success': 'Post created.',
-            'posts': posts,
-            'date': date,
-        })
-    # For any reason of get method redirect to home
+        # Redirect to homepage after creating post
+        return redirect('/')
+    # Get request redirect
     return redirect('/')
 
 
 def complete(request, post):
     post = Post.objects.get(pk=post)
-    post.completed = True
+    post.complete = True
     post.save()
     return redirect('/')
 
 
 def undo(request, post):
     post = Post.objects.get(pk=post)
-    post.completed = False
+    post.complete = False
     post.save()
     return redirect('/')
 
 
 def edit(request, post):
-    redirect('/')
+    # Handle editing post
+    if request.method == 'POST' and 'submit' in request.POST:
+        user = request.user.username
+        date = request.POST['date']
+        subject = request.POST['subject']
+        note = request.POST['note']
+        if not subject or not date or not note:
+            return redirect('/')
+        # Update changes submitted
+        post = Post.objects.get(pk=post)
+        post.user = user
+        post.due = date
+        post.subject = subject
+        post.note = note
+        post.save()
+        # Redirect back to homepage after edits made
+        return redirect('/')
+    # Handle deleting post
+    if request.method == 'POST' and 'delete' in request.POST:
+        post = Post.objects.get(pk=post)
+        post.delete()
+        return redirect('/')
+    # Get request redirect
+    return redirect('/')
+
+
+def filter(request, filter_by):
+    request.session['filter'] = filter_by
+    request.session.save()
+    return redirect('/')

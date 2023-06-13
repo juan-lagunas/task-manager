@@ -9,7 +9,8 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('signout/', views.signout, name='signout'),
     path('create/', views.create, name='create'),
-    path('complete/<int:post>', views.complete, name='complete'),
-    path('undo/<int:post>', views.undo, name='undo'),
-    path('edit/<int:post>', views.edit, name='edit'),
+    path('<int:post>/complete/', views.complete, name='complete'),
+    path('<int:post>/undo/', views.undo, name='undo'),
+    path('<int:post>/edit/', views.edit, name='edit'),
+    path('filter/<str:filter_by>/', views.filter, name='filter')
 ]
