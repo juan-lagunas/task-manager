@@ -7,7 +7,7 @@ import datetime
 class Post(models.Model):
     subject = models.CharField(max_length=64)
     user = models.CharField(max_length=64)
-    note = models.CharField(max_length=128)
+    note = models.CharField(max_length=300)
     created = models.DateField(default=datetime.datetime.now)
     due = models.DateField(default=datetime.datetime.now)
     complete = models.BooleanField(default=False, null=True)
