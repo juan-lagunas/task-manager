@@ -7,8 +7,8 @@
 {% endblock %}
 {% block body %}
 <main class="h-screen w-full absolute top-0 flex overflow-hidden">
-    <div class="h-96 w-80 sm:h-[400px] sm:w-96 m-auto">
-        <form action="{% url 'app:signin' %}" method="post" class="relative z-50 w-full h-full bg-zinc-900 px-10 rounded-3xl drop-shadow-xl grid grid-rows-5">
+    <div class="relative z-50 h-96 w-80 sm:h-[400px] sm:w-96 m-auto">
+        <form action="{% url 'app:signin' %}" method="post" class="w-full h-full bg-zinc-900 px-10 rounded-3xl drop-shadow-xl grid grid-rows-5">
             {% csrf_token %}
             <div class="text-center font-bold text-white text-3xl flex items-center justify-center">Sign In</div>
             <div class="row-span-3 flex flex-col justify-center">
