@@ -84,7 +84,7 @@
             {% for post in posts %}
                 <div class="h-96 rounded-xl drop-shadow-lg overflow-hidden">
                     
-                    <div id="post-{{ forloop.counter0 }}" class="w-full h-full p-4 {% if post.complete %} bg-green-500 {% elif post.urgent %} bg-red-500 {% else %} bg-yellow-300 {% endif %} flex flex-col justify-between overflow-auto ">
+                    <div id="post-{{ forloop.counter0 }}" class="w-full h-full p-4 {% if post.complete %} bg-green-500 {% elif post.urgent %} bg-red-500 {% else %} bg-yellow-300 {% endif %} flex flex-col justify-between overflow-auto">
                         <div class="mb-4">
                             <div class="flex flex-row justify-between mb-3">
                                 {% if post.complete %}
