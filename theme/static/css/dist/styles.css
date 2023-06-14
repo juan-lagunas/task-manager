@@ -902,10 +902,6 @@ select {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.grid-cols-1 {
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-}
-
 .grid-rows-5 {
   grid-template-rows: repeat(5, minmax(0, 1fr));
 }
@@ -944,10 +940,6 @@ select {
 
 .gap-6 {
   gap: 1.5rem;
-}
-
-.gap-5 {
-  gap: 1.25rem;
 }
 
 .overflow-auto {
@@ -1371,10 +1363,6 @@ select {
 }
 
 @media (min-width: 1280px) {
-  .xl\:grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
   .xl\:gap-4 {
     gap: 1rem;
   }
