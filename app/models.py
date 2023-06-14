@@ -3,18 +3,18 @@ import datetime
 
 # Create your models here.
 
-today = datetime.date.today()
 
 class Post(models.Model):
     subject = models.CharField(max_length=64)
     user = models.CharField(max_length=64)
     note = models.CharField(max_length=128)
-    created = models.DateField(default=today)
-    due = models.DateField(default=today)
+    created = models.DateField(default=datetime.datetime.now)
+    due = models.DateField(default=datetime.datetime.now)
     complete = models.BooleanField(default=False, null=True)
 
     @property
     def urgent(self):
+        today = datetime.date.today()
         if (self.due - today).days < 2:
             return True
         else:
