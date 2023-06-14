@@ -7,11 +7,14 @@
     <title>{% block title %}{% endblock %}</title>
     {% tailwind_css %}
     <style>
-    ::-webkit-scrollbar {
-        width: 0;  /* Remove scrollbar space */
-        background: transparent;  /* Optional: just make scrollbar invisible */
-    }
+        ::-webkit-scrollbar {
+            width: 0;  /* Remove scrollbar space */
+            background: transparent;  /* Optional: just make scrollbar invisible */
+        }
 
+        input{
+            -webkit-appearance: none;
+        }
     </style>
 </head>
 <body class="p-0 m-0 bg-zinc-200">
@@ -36,11 +39,11 @@
 
     {% if user.is_authenticated %}
     <footer class="2xl:w-3/4 mx-auto h-20 px-6 flex items-center justify-center">
-        <div class="text-base font-bold">Created by PBJ</div>
+        <div class="text-sm font-bold">Created by PBJ</div>
     </footer>
     {% else %}
     <footer class="absolute w-full h-screen top-0 p-5 -z-10 flex items-end justify-center">
-        <div class="text-base font-bold">Created by PBJ</div>
+        <div class="text-sm font-bold">Created by PBJ</div>
     </footer>
     {% endif %}
     
