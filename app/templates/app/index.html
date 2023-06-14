@@ -23,9 +23,9 @@
                         </div>
                     </div>
                     <div class="text-black flex flex-col justify-between">
-                        <label for="subject" class="block text-white font-bold mb-2 text-sm">Subject</label>
+                        <label for="subject" class=" text-white font-bold mb-2 text-sm">Subject</label>
                         <input type="text" name="subject" id="subject" class="w-full mb-6 p-3 border-0 rounded-xl focus:ring-0" placeholder="Subject" required autofocus autocomplete="off"></input>
-                        <label for="note" class="block text-white font-bold mb-2 text-sm">Note</label>
+                        <label for="note" class=" text-white font-bold mb-2 text-sm">Note</label>
                         <textarea name="note" id="note" rows="4" class="w-full mb-6 p-3 border-0 rounded-xl focus:ring-0" placeholder="Your message..." required></textarea>
                     </div>
                     <div class="text-center flex justify-center">
@@ -51,13 +51,13 @@
     <!--Filter and create buttons-->
     <section class="2xl:w-3/4 mx-auto px-6 pt-12 text-sm font-bold flex justify-between items-center text-center">
         <div class="flex flex-row gap-3 xl:gap-4 relative">
-            <button id="filter-button" class="rounded-3xl bg-white overflow-hidden group">
+            <button id="filter-button" class="rounded-3xl bg-white overflow-hidden">
                 <div class="py-3 px-3 sm:px-6 flex justify-between hover:text-blue-600 hover:fill-blue-600">
                     <span>Filter by</span>
                     <svg  class="w-5" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 -0.5 16 16"><g class="icon-color"><path d="m4.464 6.05-.707.707L8 11l4.243-4.243-.707-.707L8 9.586z"/></g></svg>
                 </div>
 
-                <ul id="filter-dropdown" class="absolute top-14 z-10 bg-[#fffffffa] rounded-3xl w-full p-3 drop-shadow text-center capitalize hidden groupd-hover:block">
+                <ul id="filter-dropdown" class="absolute top-14 z-10 bg-[#fffffffa] rounded-3xl w-full p-3 drop-shadow text-center capitalize hidden">
                     <li class="flex justify-center mb-2">
                         <a href="{% url 'app:filter' 'urgent' %}" class="py-2 w-full text-center hover:bg-zinc-200 rounded-full">Urgent</a>
                     </li>
@@ -134,9 +134,9 @@
                                 </div>
                             </div>
                             <div class="flex flex-col justify-between">
-                                <label for="subject" class="block font-bold mb-2 text-sm">Subject</label>
+                                <label for="subject" class="font-bold mb-2 text-sm">Subject</label>
                                 <input type="text" name="subject" id="subject" class="w-full mb-6 p-3 border-0 rounded-xl focus:ring-0 text-black" placeholder="Subject" required autofocus autocomplete="off" value="{{ post.subject }}"></input>
-                                <label for="note" class="block font-bold mb-2 text-sm">Note</label>
+                                <label for="note" class="font-bold mb-2 text-sm">Note</label>
                                 <textarea name="note" id="note" rows="1" min class="w-full mb-6 p-3 border-0 rounded-xl focus:ring-0 text-black" placeholder="Your message..." required>{{ post.note }}</textarea>
                             </div>
                             <div class="text-black flex items-center justify-between">
