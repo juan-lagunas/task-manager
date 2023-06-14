@@ -856,22 +856,6 @@ select {
   height: 3.5rem;
 }
 
-.\!h-16 {
-  height: 4rem !important;
-}
-
-.h-\[64px\] {
-  height: 64px;
-}
-
-.h-\[60px\] {
-  height: 60px;
-}
-
-.\!h-\[60px\] {
-  height: 60px !important;
-}
-
 .w-12 {
   width: 3rem;
 }
