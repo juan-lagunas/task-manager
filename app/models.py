@@ -9,7 +9,7 @@ class Post(models.Model):
     note = models.CharField(max_length=128)
     created = models.DateField()
     due = models.DateField()
-    complete = models.BooleanField(default=False, null=True)
+    complete = models.BooleanField(default=False)
 
     @property
     def urgent(self):
